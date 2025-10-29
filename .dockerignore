@@ -1,9 +1,10 @@
 __pycache__/
 *.pyc
 *.pyo
-*.db
-.env
+*.pyd
+env/
+venv/
 .git/
 .github/
-terraform/
-ansible/
+.gitignore
+Dockerfile

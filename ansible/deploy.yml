@@ -1,7 +1,9 @@
-- name: Deploy Fundraiser App to AKS
+- name: Deploy Flask Fundraiser App to Kubernetes
   hosts: localhost
+  connection: local
   tasks:
-    - name: Apply Kubernetes deployment
-      command: kubectl apply -f k8s-deployment.yml
-    - name: Apply Kubernetes service
-      command: kubectl apply -f k8s-service.yml
+    - name: Apply Deployment
+      command: kubectl apply -f ansible/k8s-deployment.yml
+
+    - name: Apply Service
+      command: kubectl apply -f ansible/k8s-service.yml

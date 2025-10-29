@@ -1,12 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head><title>Add Fundraiser</title></head>
+<head>
+    <title>Add Fundraiser</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2b6777;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        button {
+            background: #52ab98;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #3f8d7c;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #2b6777;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #52ab98;
+        }
+    </style>
+</head>
 <body>
     <h1>Add Fundraiser</h1>
     <form method="POST">
         <p><input name="name" placeholder="Name" required></p>
         <p><input name="goal" placeholder="Goal Amount" required></p>
-        <p><textarea name="description" placeholder="Description"></textarea></p>
+        <p><textarea name="description" placeholder="Description" rows="4"></textarea></p>
         <p><button type="submit">Add</button></p>
     </form>
     <a href="/">Back</a>

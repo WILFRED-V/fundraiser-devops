@@ -1,15 +1,73 @@
 <!DOCTYPE html>
 <html>
-<head><title>Fundraisers</title></head>
+<head>
+    <title>Fundraisers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2b6777;
+        }
+        a {
+            text-decoration: none;
+            color: #2b6777;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #52ab98;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #e8f0f2;
+            margin: 10px 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+        }
+        li:hover {
+            background: #d1e7e3;
+        }
+        .add-link {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+            background: #52ab98;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .add-link:hover {
+            background: #3f8d7c;
+        }
+    </style>
+</head>
 <body>
-    <h1>All Fundraisers</h1>
-    <a href="/add">Add New Fundraiser</a>
-    <ul>
-        {% for f in fundraisers %}
-            <li><a href="/fundraiser/{{ f.name }}">{{ f.name }}</a> - Goal: ₹{{ f.goal }}</li>
-        {% else %}
-            <li>No fundraisers yet.</li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h1>All Fundraisers</h1>
+        <a href="/add" class="add-link">+ Add New Fundraiser</a>
+        <ul>
+            {% for f in fundraisers %}
+                <li><a href="/fundraiser/{{ f.name }}">{{ f.name }}</a> - Goal: ₹{{ f.goal }}</li>
+            {% else %}
+                <li>No fundraisers yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
