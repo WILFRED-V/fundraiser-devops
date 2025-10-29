@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Fundraisers</title></head>
+<body>
+    <h1>All Fundraisers</h1>
+    <a href="/add">Add New Fundraiser</a>
+    <ul>
+        {% for f in fundraisers %}
+            <li><a href="/fundraiser/{{ f.name }}">{{ f.name }}</a> - Goal: ₹{{ f.goal }}</li>
+        {% else %}
+            <li>No fundraisers yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

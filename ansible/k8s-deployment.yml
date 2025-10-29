@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fundraiser-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fundraiser
+  template:
+    metadata:
+      labels:
+        app: fundraiser
+    spec:
+      containers:
+      - name: fundraiser
+        image: <your-acr-name>.azurecr.io/fundraiser-app:v1
+        ports:
+        - containerPort: 5000
