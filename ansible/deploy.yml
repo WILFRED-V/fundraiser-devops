@@ -1,9 +1,17 @@
-- name: Deploy Flask Fundraiser App to Kubernetes
+---
+- name: Deploy Fundraiser App to Kubernetes
   hosts: localhost
   connection: local
   tasks:
-    - name: Apply Deployment
+    - name: Apply Kubernetes Deployment
       command: kubectl apply -f ansible/k8s-deployment.yml
 
-    - name: Apply Service
+    - name: Apply Kubernetes Service
       command: kubectl apply -f ansible/k8s-service.yml
+
+    - name: Verify Pods
+      command: kubectl get pods
+      register: pod_output
+
+    - debug:
+        msg: "{{ pod_output.stdout_lines }}"

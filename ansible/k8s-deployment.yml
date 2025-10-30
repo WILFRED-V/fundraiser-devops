@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: fundraiser
-          image: fundraiser-app:test
+          image: fundraiser-app:latest
           ports:
             - containerPort: 5000

@@ -1,33 +1,26 @@
-provider "azurerm" {
-  features {}
-}
-
-resource "azurerm_resource_group" "rg" {
-  name     = var.resource_group_name
-  location = var.location
-}
-
-resource "azurerm_container_registry" "acr" {
-  name                = var.acr_name
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
-  sku                 = "Basic"
-  admin_enabled       = true
-}
-
-resource "azurerm_kubernetes_cluster" "aks" {
-  name                = var.aks_name
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  dns_prefix          = "fundraiser"
-
-  default_node_pool {
-    name       = "default"
-    node_count = 1
-    vm_size    = "Standard_B2s"
+terraform {
+  required_providers {
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.2"
+    }
   }
+}
 
-  identity {
-    type = "SystemAssigned"
+# This resource just ensures Terraform can run local commands
+resource "null_resource" "minikube_start" {
+  provisioner "local-exec" {
+    command = "minikube start --driver=docker"
   }
+}
+
+resource "null_resource" "verify_minikube" {
+  depends_on = [null_resource.minikube_start]
+  provisioner "local-exec" {
+    command = "kubectl get nodes"
+  }
+}
+
+output "minikube_status" {
+  value = "Minikube started and verified!"
 }
